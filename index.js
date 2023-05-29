@@ -1,9 +1,13 @@
 let player = {
-    name: "Cash",
+    cards: [],
     cash: 200
 }
 
-let cards = []
+let dealer = {
+    cards: []
+}
+
+//let cards = []
 let total = 0
 let hasBlackJack = false
 let isAlive = false
@@ -31,15 +35,15 @@ function startGame() {
     hasBlackJack = false
     let firstCard = getRandomCard()
     let secondCard = getRandomCard()
-    cards = [firstCard, secondCard]
+    player.cards = [firstCard, secondCard]
     total = firstCard + secondCard
     renderGame()
 }
 
 function renderGame() {
     cardsEl.textContent = "Cards: "
-    for (let i = 0; i < cards.length; i++) {
-        cardsEl.textContent += cards[i] + " "
+    for (let i = 0; i < player.cards.length; i++) {
+        cardsEl.textContent += player.cards[i] + " "
     }
     
     totalEl.textContent = "Total: " + total
@@ -60,7 +64,7 @@ function newCard() {
     if (isAlive === true && hasBlackJack === false) {
         let card = getRandomCard()
         total += card
-        cards.push(card)
+        player.cards.push(card)
         renderGame()        
     }
 }
