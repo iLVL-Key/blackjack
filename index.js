@@ -1,4 +1,4 @@
-let version = "1.1.7"
+let version = "1.1.8"
 
 let player = {
     cards: [],
@@ -158,7 +158,7 @@ function endGame() {
                 message = "Blackjack! Dealer busts!"
                 player.cash += player.wager * 2.5       //-payout equals 2.5 of your wager (your wager back, plus 150% of your wager as your winnings, "blackjack pays 3to2")
             } else {                                    //and you don't have blackjack
-                message = "Dealer busts! You win!"
+                message = "You win!"
                 player.cash += player.wager * 2         //-payout equals double your wager (your wager back, plus an equal amount as your winnings)
             }
         }
