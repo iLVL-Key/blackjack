@@ -4,12 +4,33 @@
     </head>
     <body>
         <h1>Blackjack</h1>
-        <p id="message-el">Want to play a round?</p>
-        <p id="cards-el">Cards:</p>
-        <p id="total-el">Total:</p>
-        <button onclick="startGame()">START GAME</button>
-        <button onclick="newCard()">NEW CARD</button>
-        <p id="player-el"></p>
+        <p id="message-el">Fancy a game?</p>
+        <p id="rules1-el">$20 wager</p>
+        <p id="rules2-el">Blackjack pays 3 to 2</p>
+        <p id="rules3-el">Dealer must stand on 17 and must draw to 16</p>
+        <table class="cards">
+            <tr>
+                <th id="dealerHeader-el"></th>
+                <th style="width:50px"></th>
+                <th id="playerHeader-el"></th>
+            </tr>
+            <tr>
+                <td>
+                    <p id="dealerCards-el"></p>
+                    <p id="dealerTotal-el"></p>
+                </td>
+                <td></td>
+                <td>
+                    <p id="playerCards-el"></p>
+                    <p id="playerTotal-el"></p>
+                </td>
+            </tr>
+        </table>
+
+        <button onclick="playerNewCard()">HIT</button>
+        <button onclick="endGame()">STAND</button>
+        <p id="playerCash-el"></p>
+        <button onclick="startGame()">NEW GAME</button>
         <script src="index.js"></script>
     </body>
 </html>

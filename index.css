@@ -11,6 +11,20 @@ h1 {
     color: goldenrod;
 }
 
+.cards {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+#dealerHeader-el {
+    color: #fc6203
+}
+
+#playerHeader-el {
+    color: #03b6fc
+}
+
 #message-el {
     font-style: italic;
 }
