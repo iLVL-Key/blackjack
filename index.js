@@ -116,6 +116,7 @@ function dealerNewCard() {
 
 //REVEAL THE DEALERS CARDS
 function revealDealerCards() {
+    console.log("revealed")
     dealerCardsEl.textContent = ""
     for (let i = 0; i < dealer.cards.length; i++) { //start at index 0 because we want to show all the dealers cards now
         dealerCardsEl.textContent += "[" + dealer.cards[i] + "] "
@@ -132,29 +133,30 @@ function endGame() {
             }
             while (dealer.total <16)    //keep drawing a new card if the dealer is under 16 ("must draw to 16")
         }
-        revealDealerCards()             //Once the dealer is finished, reveal their cards
-    }
-    //if dealer busts:
-    if (dealer.total > 21) {                        //dealer has busted
-        if (player.total === 21) {                  //and you have blackjack
-            message = "Blackjack! Dealer busts!"
-            player.cash += player.wager * 2.5       //-payout equals 2.5 of your wager (your wager back, plus 150% of your wager as your winnings, "blackjack pays 3to2")
-        } else {                                    //and you don't have blackjack
-            message = "Dealer busts!"
-            player.cash += player.wager * 2         //-payout equals double your wager (your wager back, plus an equal amount as your winnings)
+        //if dealer busts:
+        if (dealer.total > 21) {                        //dealer has busted
+            if (player.total === 21) {                  //and you have blackjack
+                message = "Blackjack! Dealer busts!"
+                player.cash += player.wager * 2.5       //-payout equals 2.5 of your wager (your wager back, plus 150% of your wager as your winnings, "blackjack pays 3to2")
+            } else {                                    //and you don't have blackjack
+                message = "Dealer busts! You win!"
+                player.cash += player.wager * 2         //-payout equals double your wager (your wager back, plus an equal amount as your winnings)
+            }
+        //if dealer is higher than you: lose your wager/no payout
+        } else if (dealer.total > player.total) {
+            message = "Dealer wins!"
+        //if dealer total is equal to your total:
+        } else if (dealer.total === player.total) {
+            message = "Push!"
+            player.cash += player.wager                 //payout equals wager (you get your wager back, with no winnings)
+        //if dealer total is less than your total:
+        } else {
+            message = "You win!"
+            player.cash += player.wager * 2               //payout equals double your wager (your wager back, plus an equal amount as your winnings)
         }
-    //if dealer is higher than you: lose your wager/no payout
-    } else if (dealer.total > player.total) {
-        message = "Dealer wins!"
-    //if dealer total is equal to your total:
-    } else if (dealer.total === player.total) {
-        message = "Push!"
-        player.cash += player.wager                 //payout equals wager (you get your wager back, with no winnings)
-    //if dealer total is less than your total:
-    } else {
-        message = "You win!"
-        player.cash += player.wager * 2               //payout equals double your wager (your wager back, plus an equal amount as your winnings)
+        messageEl.textContent = message
+        playerCashEl.textContent = "Cash: $" + player.cash
+        revealDealerCards()             //Once the dealer is finished, reveal their cards
+        isAlive = false
     }
-    messageEl.textContent = message
-    playerCashEl.textContent = "Cash: $" + player.cash
 }
