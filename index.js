@@ -1,4 +1,4 @@
-let version = "1.1.8"
+let version = "1.1.9"
 
 let player = {
     cards: [],
@@ -89,14 +89,11 @@ function renderGame() {
     playerCashEl.textContent = "Cash: $" + player.cash
 
     dealerTotalEl.textContent = "Total: ?"
-    dealerCardsEl.textContent = "[?] "
-    for (let i = 1; i < dealer.cards.length; i++) { //start at index 1 because we don't want to show the first card
-        dealerCardsEl.textContent += "[" + dealer.cards[i] + "] "
-    }
+    dealerCardsEl.textContent = "[?] [" + dealer.cards[1] + "] " //the dealers first card is always hidden, we're only showing the second card (index 1)
 
-    for (let i = 0; i < dealer.cards.length; i++) {
-        console.log("Dealer Card " + i +": " + dealer.cards[i])
-    }
+    // for (let i = 0; i < dealer.cards.length; i++) {
+    //     console.log("Dealer Card " + i +": " + dealer.cards[i])
+    // }
 }
 
 //DRAW A NEW CARD FOR THE PLAYER (HIT)
@@ -119,7 +116,6 @@ function dealerNewCard() {
 
 //REVEAL THE DEALERS CARDS
 function revealDealerCards() {
-    console.log("revealed")
     dealerCardsEl.textContent = ""
     for (let i = 0; i < dealer.cards.length; i++) { //start at index 0 because we want to show all the dealers cards now
         dealerCardsEl.textContent += "[" + dealer.cards[i] + "] "
