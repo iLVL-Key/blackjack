@@ -1,4 +1,4 @@
-let version = "1.1.9"
+let version = "1.1.10"
 
 let player = {
     cards: [],
@@ -27,11 +27,8 @@ let dealerTotalEl = document.getElementById("dealerTotal-el")
 let playerHeaderEl = document.getElementById("playerHeader-el")
 let playerCardsEl = document.getElementById("playerCards-el")
 let playerTotalEl = document.getElementById("playerTotal-el")
-let playerCashEl = document.getElementById("playerCash-el")
-let versionEl = document.getElementById("version-el")
-
-playerCashEl.textContent = "Cash: $" + player.cash
-versionEl.textContent = "Version " + version
+let playerCashEl = document.getElementById("playerCash-el").textContent = "Cash: $" + player.cash
+let versionEl = document.getElementById("version-el").textContent = "Version " + version
 
 
 //GENERATE A NEW CARD
