@@ -1,4 +1,5 @@
-let version = "1.1.10"
+const version = "1.1.11"
+const versionEl = document.getElementById("version-el").textContent = "Version " + version
 
 let player = {
     cards: [],
@@ -12,8 +13,6 @@ let dealer = {
     total: 0
 }
 
-//let cards = []
-//let total = 0
 let hasBlackJack = false
 let isAlive = false
 let message = ""
@@ -28,8 +27,6 @@ let playerHeaderEl = document.getElementById("playerHeader-el")
 let playerCardsEl = document.getElementById("playerCards-el")
 let playerTotalEl = document.getElementById("playerTotal-el")
 let playerCashEl = document.getElementById("playerCash-el").textContent = "Cash: $" + player.cash
-let versionEl = document.getElementById("version-el").textContent = "Version " + version
-
 
 //GENERATE A NEW CARD
 function getRandomCard() {
